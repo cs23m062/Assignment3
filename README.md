@@ -23,21 +23,28 @@ pip install lightning
 ```
 
 
-``` pip install pytorch ```
+``` python
+pip install pytorch
+```
 
 
-``` pip install wandb ```
+```python
+pip install wandb
+```
 
 
 Also ensure anaconda is present, in your system, if not present Download Anaconda [(here)](https://www.anaconda.com/download)
 
 ## Running the program:
-### FOR PART A
 Run the command(Runs in default settings mentioned in table below): 
-``` python train_partA.py ```
+``` python
+python train_partA.py
+```
 
 How to pass arguments:
-``` python train_partA.py -e 10 -lr 0.001 -b 32```
+(A) ``` python
+python train_partA.py -e 10 -lr 0.001 -b 32
+```
 
 #### Available commands
 | Name        | Default Value   | Description  |
