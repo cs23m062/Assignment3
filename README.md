@@ -38,9 +38,22 @@ pip install wandb
 Also ensure anaconda is present, in your system, if not present Download Anaconda [(here)](https://www.anaconda.com/download)
 
 ## Running the program:
+=> Attentiontrain.py is present inside the Attention folder
+Download it
+and update the path variable with the relative path of your dataset
+
+Imp : 
+##### Do not give relative path like this :
+/content/drive/MyDrive/aksharantar_sampled/hin
+
+##### Example of how to give the correct path is like this:
+```python
+/content/drive/MyDrive/aksharantar_sampled/
+```
+
 Run the command(Runs in default settings mentioned in table below): 
 ``` python
-python train_partA.py
+python Attentiontrain.py
 ```
 
 How to pass arguments:
