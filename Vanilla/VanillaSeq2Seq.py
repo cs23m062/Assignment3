@@ -96,20 +96,15 @@ class LangToLang(nn.Module):
         self.encoder = encoder
         self.decoder = decoder
 
-    def forward(self, source, target, teacher_force_ratio=0.5):
-        batch_size = source.shape[1]
-        target_length = target.shape[0]
-        target_vocab_size = self.decoder.output_size
-
-        outputs = torch.zeros(target_length, batch_size, target_vocab_size).to(device)
-
+    def forward(self, source, target, teacher_force_ratio=0.5): 
+        outputs = torch.zeros(target.shape[0], source.shape[1], self.decoder.output_size).to(device)
         hidden, cell = self.encoder(source)
         hidden = hidden.repeat(self.decoder.num_layers,1,1)
         if self.decoder.cell_type == "LSTM":
             cell = cell.repeat(self.decoder.num_layers,1,1)
 
         x = target[0]
-        for i in range(1, target_length):
+        for i in range(1, target.shape[0]):
             output, hidden, cell = self.decoder(x, hidden, cell)
             outputs[i] = output
             best_guess = output.argmax(dim=1)
