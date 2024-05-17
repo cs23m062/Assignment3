@@ -1,7 +1,7 @@
 In this assignment, you will experiment with a sample of the Aksharantar dataset released by AI4Bharat. This dataset contains pairs of the following form: 
 x,y
 ajanabee,अजनबी 
-i.e., a word in the native script and its corresponding transliteration in the Latin script (how we type while chatting with our friends on WhatsApp etc). Given many such (xi,yi)i=1n(x_i, y_i)_{i=1}^n pairs your goal is to train a model y=f^(x)y = \hat{f}(x) which takes as input a romanized string (ghar) and produces the corresponding word in Devanagari (घर). 
+i.e., a word in the native script and its corresponding transliteration in the Latin script (how we type while chatting with our friends on WhatsApp etc). Given many such $(xi,yi)i=1n(x_i, y_i)_{i=1}^n$ pairs your goal is to train a model $y=f^(x)y = \hat{f}(x)$ which takes as input a romanized string (ghar) and produces the corresponding word in Devanagari (घर). 
 As you would realize, this is the problem of mapping a sequence of characters in one language to a sequence of characters in another. Notice that this is a scaled-down version of the problem of translation where the goal is to translate a sequence of words in one language to a sequence of words in another language (as opposed to a sequence of characters here).
 
 
