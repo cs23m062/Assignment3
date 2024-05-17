@@ -42,8 +42,8 @@ python train_partA.py
 ```
 
 How to pass arguments:
-(A) ``` python
-python train_partA.py -e 10 -lr 0.001 -b 32
+``` python
+python Attentiontrain.py -e 10 -b 32 -lr 0.001 -t hin -ct LSTM -em 128 -hi 512 -el 4 -dl 4 -dr 0.2 -bi True -op Adam
 ```
 
 #### Available commands
@@ -53,13 +53,13 @@ python train_partA.py -e 10 -lr 0.001 -b 32
 | -we	--wandb_entity| myname | Wandb Entity used to track experiments in the Weights & Biases dashboard. |
 |-e, --epochs|5|Number of epochs to train neural network.|
 |-b, --batch_size|16|Batch size used to train neural network.|
-|-o, --optimizer	|Mish|choices: ["Mish", "ReLU", "GELU", "CELU","SiLU","Tanh"]|
-|-lr, --learning_rate|0.01|Learning rate used to optimize model parameters|
-|-a, --activation|tanh|	choices: ["identity", "sigmoid", "tanh", "ReLU"]|
-|-ds,--dense_size|1024|Number of hidden neurons in a fully connected layer|
-|-fpl,--filter_per_layers|64|Number of filters to be used per convolution layer|
-|-d,--dropout|0|Dropout probability in dense layer|
-|-s,--stride|1|length of stride in maxpooling layer|
-|-bn,--batchnorm|yes|yes if want to use batch normalization else no|
-|-fl,--filter_length|3|length of the filter|
-|-fo,--filterorg|same|same will keep same number of filters every layer, double doubles and half halves every layer(maxpool + conv)|
+|-op, --optimizer	|Adam|choices: ["Sgd","Adam","Nadam"]|
+|-lr, --learning_rate|0.001|Learning rate used to optimize model parameters|
+|-t,--target_lang|hin|	Target Language in which transliteration system works, choices: ["hin", "ben", "telugu"]|
+|-ct,--cell_type|LSTM|Type of cell to be used in architecture Choose b/w [LSTM,RNN,GRU]|
+|-em,--embedding_size|128|size of embedding to be used in encoder decoder|
+|-hi,--hidden_size|512|Hidden layer size of encoder and decoder|
+|-el,--encoder_layers|4|Number of hidden layers in encoder|
+|-dl,--decoder_layers|4|Number of hidden layers in decoder|
+|-dr,--dropout|0.2|dropout probability|
+|-bi,--bidirectional|True|Whether you want the data to be read from both directions|
