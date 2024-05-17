@@ -11,15 +11,7 @@ from VanillaSeq2Seq import Encoder
 from VanillaSeq2Seq import Decoder
 from VanillaSeq2Seq import LangToLang
 
-# Paste your own key here
-import wandb
-#wandb.login()
-# functions with comments explained in script file
-# no redundant comments here
-# only new functions are explained here in comments
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
 
 SOS_char = "<SOS>"
 EOS_char = "<EOS>"
