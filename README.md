@@ -57,10 +57,19 @@ Run the command(Runs in default settings mentioned in table below):
 python Attentiontrain.py
 ```
 
+``` python
+python vanilla.py
+```
+
 How to pass arguments:
 ``` python
 python Attentiontrain.py -e 10 -b 32 -lr 0.001 -t hin -ct LSTM -em 128 -hi 512 -el 4 -dl 4 -dr 0.2 -bi True -op Adam
 ```
+
+``` python
+python vanilla.py -e 10 -b 32 -lr 0.001 -t hin -ct LSTM -em 128 -hi 512 -el 4 -dl 4 -dr 0.2 -bi True -op Adam
+```
+
 
 #### Available commands
 | Name        | Default Value   | Description  |
