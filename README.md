@@ -14,13 +14,8 @@ follow this guide to install Python in your system:
 2. Linux: https://kinsta.com/knowledgebase/install-python/#linux
 3. MacOS: https://kinsta.com/knowledgebase/install-python/#mac
 
-### ENSURE PYTORCH LIGHTNING IS PRESENT IN YOUR SYSTEM
+### ENSURE PYTORCH IS PRESENT IN YOUR SYSTEM
 if the libraries are not present just run the command:
-
-
-``` python
-pip install lightning
-```
 
 
 ``` python
