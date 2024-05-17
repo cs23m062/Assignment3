@@ -1,6 +1,6 @@
 ## General Instructions :
 1. If running on a local host: Ensure Python is present in your system and also see if these libraries are present in your system
-   - pytorch lightning [(lightning)](https://lightning.ai/docs/pytorch/stable/)
+   - pytorch ([https://lightning.ai/docs/pytorch/stable/](https://pytorch.org/docs/stable/index.html))
    - weights and biases [(wandb)](https://docs.wandb.ai/?_gl=1*1lup0xs*_ga*NzgyNDk5ODQuMTcwNTU4MzMwNw..*_ga_JH1SJHJQXJ*MTcxMDY3NjQ2MS43Ny4xLjE3MTA2NzY0NjQuNTcuMC4w)
    - scikit-learn [(sklearn)](https://scikit-learn.org/stable/)
    - [matplotlib](https://matplotlib.org/)
