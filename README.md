@@ -39,7 +39,7 @@ pip install wandb
 Also ensure anaconda is present, in your system, if not present Download Anaconda [(here)](https://www.anaconda.com/download)
 
 ## Running the program:
-=> Attentiontrain.py is present inside the Attention folder
+=> Attentiontrain.py is present inside the Attention folder(It is insisted to run this model as it is better optimised according to specifications)
 Download it
 and update the path variable with the relative path of your dataset
 
