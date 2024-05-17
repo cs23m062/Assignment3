@@ -79,13 +79,14 @@ class Decoder(nn.Module):
     def forward(self, x, hidden, cell):    
         x = x.unsqueeze(0)
         embedding = self.dropout(self.embedding(x))    
-        outputs,hidden = self.cell(embedding, hidden)   
+
+        if self.cell_type == "LSTM":
+            outputs, (hidden, cell) = self.cell(embedding, (hidden, cell))
+        else:
+            outputs, hidden = self.cell(embedding, hidden)    
 
         predictions = self.fc(outputs)
         predictions = predictions.squeeze(0)
-        if(len(hidden)>1):
-            cell = hidden[1]
-            return predictions, hidden[0], cell
         return predictions, hidden, cell
     
 
