@@ -96,8 +96,8 @@ class Validator :
         
         with torch.no_grad():
             for batch_idx, (input_seq, target_seq) in enumerate(dataloader):
-                input_seq = input_seq.T.to(device)
-                target_seq = target_seq.T.to(device)
+                input_seq = torch.transpose(input_seq,0,1).to(device)
+                target_seq = torch.transpose(target_seq,0,1).to(device)
                 output = model(input_seq, target_seq, teacher_force_ratio=0.0)
                 
                 pred_seq = output.argmax(dim=2)
@@ -131,8 +131,8 @@ def trainer(model,train_dataloader, valid_dataloader, num_epochs,opt_str,batch_s
 
         for batch_idx, (input_seq, target_seq) in enumerate(train_dataloader):
             
-            input_seq = input_seq.T.to(device)
-            target_seq = target_seq.T.to(device)
+            input_seq = torch.transpose(input_seq,0,1).to(device)
+            target_seq = torch.transpose(target_seq,0,1).to(device)
 
             output = model(input_seq, target_seq)
 
