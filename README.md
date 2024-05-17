@@ -1,6 +1,13 @@
+In this assignment, you will experiment with a sample of the Aksharantar dataset released by AI4Bharat. This dataset contains pairs of the following form: 
+x,y
+ajanabee,अजनबी 
+i.e., a word in the native script and its corresponding transliteration in the Latin script (how we type while chatting with our friends on WhatsApp etc). Given many such (xi,yi)i=1n(x_i, y_i)_{i=1}^n pairs your goal is to train a model y=f^(x)y = \hat{f}(x) which takes as input a romanized string (ghar) and produces the corresponding word in Devanagari (घर). 
+As you would realize, this is the problem of mapping a sequence of characters in one language to a sequence of characters in another. Notice that this is a scaled-down version of the problem of translation where the goal is to translate a sequence of words in one language to a sequence of words in another language (as opposed to a sequence of characters here).
+
+
 ## General Instructions :
 1. If running on a local host: Ensure Python is present in your system and also see if these libraries are present in your system
-   - pytorch ([https://lightning.ai/docs/pytorch/stable/](https://pytorch.org/docs/stable/index.html))
+   - Python torch ([pytorch](https://pytorch.org/docs/stable/index.html))
    - weights and biases [(wandb)](https://docs.wandb.ai/?_gl=1*1lup0xs*_ga*NzgyNDk5ODQuMTcwNTU4MzMwNw..*_ga_JH1SJHJQXJ*MTcxMDY3NjQ2MS43Ny4xLjE3MTA2NzY0NjQuNTcuMC4w)
    - scikit-learn [(sklearn)](https://scikit-learn.org/stable/)
    - [matplotlib](https://matplotlib.org/)
