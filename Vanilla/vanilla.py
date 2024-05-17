@@ -8,6 +8,7 @@ from VanillaSeq2Seq import Decoder
 from VanillaSeq2Seq import LangToLang
 from vanillahelper import Helper
 from vanilladataset import datasetcreator
+import argparse
 
 # Set the device to GPU if available, otherwise CPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -102,9 +103,18 @@ batch_size = 32
 train_dataloader, valid_dataloader, test_dataloader = dataset.datasetcreation()
 
 # Main function to initialize and train the model
-def main():
-    num_epochs = 10
-    learning_rate = 0.001
+def main(args):
+    config['cell_type'] = args.cell_type
+    config['embedding_size'] = args.embedding_size
+    config['hidden_size'] = args.hidden_size
+    config['enc_num_layers'] = args.encoder_layers
+    config['dec_num_layers'] = args.decoder_layers
+    config['dropout'] = args.dropout
+    config['bidirectional'] =  args.bidirectional
+    config['epochs'] = args.epochs
+
+    epochs = args.epochs
+    learning_rate = args.learning_rate
 
     input_size_encoder = 29
     input_size_decoder = 131
@@ -113,7 +123,6 @@ def main():
     # Update config dictionary with input and output sizes
     config['input_size'] = input_size_encoder
     config['output_size'] = output_size
-    config['bidirectional'] = True
     
     # Initialize encoder and decoder with the configuration
     encoder = Encoder(config).to(device)
@@ -123,11 +132,30 @@ def main():
     model = LangToLang(encoder, decoder).to(device)
         
     # Train the model
-    trainer(model, train_dataloader, valid_dataloader, num_epochs, 'Adam', batch_size, learning_rate)
+    opt_str = args.optimizer
+    trainer(model, train_dataloader, valid_dataloader, epochs, opt_str, batch_size, learning_rate)
     
     # Evaluate the model on the test dataset
     loss, acc = Validator.evaluateModel(model, test_dataloader, nn.CrossEntropyLoss(), batch_size) 
     print('Test Loss:', loss)
     print('Test Accuracy:', acc)
     
-main()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Deep_LearingAssignment1_CS23M062 -command line arguments")
+    parser.add_argument("-wp","--wandb_project", type=str, default ='Shubhodeep_CS6190_DeepLearing_Assignment3', help="Project name used to track experiments in Weights & Biases dashboard")
+    parser.add_argument("-we","--wandb_entity", type=str, default ='shubhodeepiitm062',help="Wandb Entity used to track experiments in the Weights & Biases dashboard.")
+    parser.add_argument("-e","--epochs",type=int,default = 10,help ='Number of epochs to train neural network.')
+    parser.add_argument("-b","--batch_size",type=int,default = 32,help='Batch size used to train neural network.')  
+    parser.add_argument('-lr','--learning_rate',type=float,default=0.001,help='Learning rate used to optimize model parameters')
+    parser.add_argument('-t','--target_lang',type=str,default='hin',help='Target Language in which transliteration system works')
+    parser.add_argument('-ct',"--cell_type",type=str,default="LSTM",help='Type of cell to be used in architecture Choose b/w [LSTM,RNN,GRU]')
+    parser.add_argument('-em','--embedding_size',type=int,default=128,help='size of embedding to be used in encoder decoder')
+    parser.add_argument('-hi','--hidden_size',type=int,default=512,help='Hidden layer size of encoder and decoder')
+    parser.add_argument('-el',"--encoder_layers",type=int,default=4,help='Number of hidden layers in encoder')
+    parser.add_argument('-dl',"--decoder_layers",type=int,default=4,help='Number of hidden layers in decoder')
+    parser.add_argument('-dr','--dropout',type=float,default=0.2,help='dropout probability')
+    parser.add_argument('-bi',"--bidirectional",type=bool,default=True,help='Whether you want the data to be read from both directions')
+    parser.add_argument('-op','--optimizer',type=str,default='Adam',help='choices: ["Sgd","Adam", "Nadam"]')  
+    args = parser.parse_args()
+    main(args)
